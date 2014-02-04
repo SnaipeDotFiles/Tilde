@@ -1,3 +1,6 @@
 [submodule "bin"]
 	path = bin
 	url = https://github.com/Snaipe/bin.git
+[submodule ".vim/bundle/vundle"]
+	path = .vim/bundle/vundle
+	url = https://github.com/gmarik/vundle.git
