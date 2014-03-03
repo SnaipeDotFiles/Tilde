@@ -40,3 +40,4 @@ workspace
 .ICEauthority
 .NERDTreeBookmarks
 .cache
+.config/gtk-*

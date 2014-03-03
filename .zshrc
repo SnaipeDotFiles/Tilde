@@ -6,8 +6,9 @@ prompt redhat
 
 setopt HIST_IGNORE_DUPS
 
-typeset -A key
+bindkey -v
 
+typeset -A key
 key[Home]=${terminfo[khome]}
 key[End]=${terminfo[kend]}
 key[Insert]=${terminfo[kich1]}
