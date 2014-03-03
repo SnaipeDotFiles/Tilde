@@ -1,10 +1,12 @@
+source .colors
+
 autoload -U compinit promptinit
 compinit
 promptinit
 
-prompt redhat
-
 setopt HIST_IGNORE_DUPS
+
+# keybinds
 
 bindkey -v
 
@@ -41,6 +43,8 @@ if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
     zle -N zle-line-init
     zle -N zle-line-finish
 fi
+
+# aliases
 
 alias ls="ls --color=auto"
 alias ll="ls -al"
