@@ -1,7 +1,21 @@
-typeset -U path
+{
+alias map=typeset -A
+alias bind=typeset -T
+alias var=typeset
+
+bind LD_LIBRARY_PATH ldpath
+bind EDITOR editor
+bind PAGER pager
+bind READNULLCMD nullpager
+bind LESS less
+typeset -U path ldpath
+
 path=(~/bin $path)
-export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
-export EDITOR=vim
-export PAGER=less
-export READNULLCMD=$PAGER
-export LESS=-FX
+ldpath=(/usr/local/lib $ldpath)
+editor=vim
+pager=less
+nullpager=$pager
+less=-FX
+
+eval $(ssh-agent)
+} >/dev/null 2>&1
