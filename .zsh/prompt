@@ -16,7 +16,7 @@ prompt_segment() {
     echo -n "%{$bg%}%{$fg%} "
   fi
   CURRENT_BG=$1
-  [[ -n $3 ]] && print -Pn $3
+  [[ -n $3 ]] && print $4 -n $3
 }
 
 prompt_context() {
@@ -24,13 +24,11 @@ prompt_context() {
 }
 
 prompt_status() {
-	[[ -z "$prompt_symbols" ]] && prompt_segment black default $prompt_symbols
-	#prompt_segment black default '%(?,%F{green}:%),%F{yellow}%? %F{red}:()%f'
-	#prompt_segment black default "%(1?,,%{%F{red}%}✘)%f%(!.%{%F{yellow}%}⚡ .)%(1j.%{%F{cyan}%}%j⚙ .)"
+	prompt_segment black default "%(?,,%{%F{red}%}✘ )%(!,%{%F{yellow}%}⚡ ,)%(1j,%{%F{cyan}%}%j ⚙ ,)"
 }
 
 prompt_dir() {
-	prompt_segment blue black '%2%~'
+	prompt_segment blue black '%2%~' -P
 }
 
 prompt_end() {
@@ -43,28 +41,15 @@ prompt_end() {
   CURRENT_BG=''
 }
 
-export prompt_symbols
-
-precmd() {
-	retval=$?
-	notify-send $retval
-	prompt_symbols=()
-	local jobcount=$(jobs -l | wc -l)
-	[[ $retval -gt 0 ]] && prompt_symbols+="%{%F{red}%}✘)"
-	[[ $jobcount -gt 0 ]] && prompt_symbols+="%{%F{cyan}%}$jobcount⚙"
-	#prompt_segment black default "%{%F{red}%}✘) %{%F{yellow}%}⚡ %{%F{cyan}%}⚙ "
-
-}
-
 build_prompt() {
-	notify-send bouh
-	export RETVAL=$?
 	prompt_context
 	prompt_status
 	prompt_dir
 	prompt_end
 }
 
-PROMPT=$(echo -en "\n$(build_prompt)\n 〉")
+PROMPT="
+$(build_prompt)
+ 〉"
 RPROMPT='(tty: %l) [%*]'
 SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
