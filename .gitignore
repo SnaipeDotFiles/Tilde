@@ -41,3 +41,8 @@ workspace
 .NERDTreeBookmarks
 .cache
 .config/gtk-*
+.config/*
+.subversion/*
+games/*
+logs/*
+.gnupg/*
