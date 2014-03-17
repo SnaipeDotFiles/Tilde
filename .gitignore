@@ -46,3 +46,4 @@ workspace
 games/*
 logs/*
 .gnupg/*
+.gem

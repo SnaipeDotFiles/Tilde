@@ -10,7 +10,7 @@ bind READNULLCMD nullpager
 bind LESS less
 typeset -U path ldpath
 
-path=(~/bin $path)
+path=(~/bin ~/.gem/ruby/2.1.0/bin $path)
 ldpath=(/usr/local/lib $ldpath)
 editor=vim
 pager=less
