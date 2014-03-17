@@ -16,12 +16,17 @@ Bundle 'airblade/vim-gitgutter'
 Bundle 'vim-scripts/a.vim'
 Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'terryma/vim-multiple-cursors'
+Bundle 'msanders/snipmate.vim'
+Bundle 'Lokaltog/vim-easymotion'
 
 filetype plugin indent on
 syntax on
 
 " Leader key
 let mapleader=','
+
+" Replace useless help
+map! <F1> :help<CR>
 
 " Colors
 set t_Co=256
@@ -47,12 +52,12 @@ set undofile
 set mouse=a
 
 " Wrapping
-set wrap
+set nowrap
 set textwidth=79
 set formatoptions=qrn1
 
 " Layout
-set number
+set lazyredraw
 set colorcolumn=80
 
 " Whitespace display
@@ -64,31 +69,31 @@ set title
 set titlestring=Vim:\ %f\ %h%r%m
 
 " Selection
-nmap <S-Up> <ESC>v<Up>
-imap <S-Up> <ESC>v<Up>
-vmap <S-Up> <Up>
-nmap <S-Down> <ESC>v<Down>
-imap <S-Down> <ESC>v<Down>
-vmap <S-Down> <Down>
-nmap <S-Left> <ESC>v<Left>
-imap <S-Left> <ESC>v<Left>
-vmap <S-Left> <Left>
-nmap <S-Right> <ESC>v<Right>
-imap <S-Right> <ESC>v<Right>
-vmap <S-Right> <Right>
+nmap <S-j> <ESC>vj
+vmap <S-j> j
+nmap <S-k> <ESC>vk
+vmap <S-k> k
+nmap <S-h> <ESC>vh
+vmap <S-h> h
+nmap <S-l> <ESC>vl
+vmap <S-l> l
+
+" Pair matching
+set showmatch
+set matchtime=3
 
 " Search
 set ignorecase
 set smartcase
-set showmatch
 set hlsearch
 set incsearch
 set gdefault
 set matchpairs+=<:>
-nmap <leader>c <ESC>:let @/ = ""<CR>
-imap <leader>c <ESC>:let @/ = ""<CR>a
+map! <leader>c <ESC>:let @/ = ""<CR>
 
 " Misc
+set backspace=indent,eol,start
+set ttyfast
 set cursorline
 
 " Spelling
@@ -96,13 +101,54 @@ set dictionary=/usr/share/dict/words
 
 " Completion
 set omnifunc=syntaxcomplete#Complete
-inoremap <leader><space> <C-X><C-O>
+inoremap <leader>j <C-X><C-O>
 
 " Tabs
 set showtabline=2
 set tabpagemax=30
 nmap <silent> <C-l> tabn
 nmap <silent> <C-h> tabp
+
+" Autoreload file
+set autoread
+au CursorHold * checktime
+
+" Toggle between relative and absolute numbering
+set nonumber
+set relativenumber
+
+function! NumberToRelative()
+	set nonumber
+	set relativenumber
+endfunc
+function! RelativeToNumber()
+	set number
+	set norelativenumber
+endfunc
+
+function! ToggleNumbering()
+	if (&relativenumber == 1)
+		call RelativeToNumber()
+	else
+		call NumberToRelative()
+	endif
+endfunc
+
+cnoreabbrev togglenumbering :call ToggleNumbering()
+cnoreabbrev tnu :call ToggleNumbering()
+nnoremap <F2> :call ToggleNumbering()<CR>
+autocmd InsertEnter * :call RelativeToNumber()
+autocmd InsertLeave * :call NumberToRelative()
+
+" No arrow keys, thanks
+nnoremap <up>    <nop>
+nnoremap <down>  <nop>
+nnoremap <left>  <nop>
+nnoremap <right> <nop>
+inoremap <up>    <nop>
+inoremap <down>  <nop>
+inoremap <left>  <nop>
+inoremap <right> <nop>
 
 " Remove trailing whitespace on write
 au BufWritePre <buffer> :call setline(1, map(getline(1,"$"), 'substitute(v:val, "\\s\\+$","","")'))
@@ -119,12 +165,13 @@ if !exists("*ReloadVimrc")
 		endif
 	endfunction
 endif
+cnoreabbrev reloadvim :call ReloadVimrc()
 map <leader>r :call ReloadVimrc()<CR>
 
 " Auto reload .vimrc
 augroup myvimrc
-    au!
-    au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc call ReloadVimrc()
+	au!
+	au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc call ReloadVimrc()
 augroup END
 
 " Return to line when reopening a file
@@ -148,14 +195,13 @@ cnoreabbrev w!! w !sudo tee % >/dev/null
 
 " Retab
 function! Tabbify(size)
-    set noexpandtab
-    set tabstop=4
-    %retab!
+	set noexpandtab
+	let &l:tabstop = a:size
+	%retab!
 endfunction
-command! -nargs=* Tabbify execute call Tabbify( '<args>' )
+command! -nargs=1 Tabbify call Tabbify( '<args>' )
 
 " Indentation settings
-set nowrap
 set smartindent
 set noexpandtab
 set tabstop=4
@@ -163,6 +209,8 @@ set softtabstop=4
 set shiftwidth=4
 nnoremap <Tab> >>_
 nnoremap <S-Tab> <<_
+vnoremap <Tab> >><ESC>_
+vnoremap <S-Tab> <<<ESC>_
 inoremap <S-Tab> <<_
 
 set pastetoggle=<F12>
@@ -175,10 +223,10 @@ set wildignore+=*.o,*.aux
 " Navigation
 nnoremap k gk
 nnoremap j gj
-nmap <silent> <S-h> :wincmd h<CR>
-nmap <silent> <S-j> :wincmd j<CR>
-nmap <silent> <S-k> :wincmd k<CR>
-nmap <silent> <S-l> :wincmd l<CR>
+nmap <silent> <left> :wincmd h<CR>
+nmap <silent> <down> :wincmd j<CR>
+nmap <silent> <up> :wincmd k<CR>
+nmap <silent> <right> :wincmd l<CR>
 
 " Plugin mappings
 map <leader>gg :GitGutterToggle<CR>
