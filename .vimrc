@@ -53,11 +53,10 @@ set mouse=a
 
 " Wrapping
 set nowrap
-set textwidth=79
+"set textwidth=79
 set formatoptions=qrn1
 
 " Layout
-set lazyredraw
 set colorcolumn=80
 
 " Whitespace display
@@ -141,11 +140,11 @@ autocmd InsertEnter * :call RelativeToNumber()
 autocmd InsertLeave * :call NumberToRelative()
 
 " No arrow keys, thanks
-nnoremap <up>    <nop>
+nnoremap <up>	 <nop>
 nnoremap <down>  <nop>
 nnoremap <left>  <nop>
 nnoremap <right> <nop>
-inoremap <up>    <nop>
+inoremap <up>	 <nop>
 inoremap <down>  <nop>
 inoremap <left>  <nop>
 inoremap <right> <nop>
@@ -174,6 +173,11 @@ augroup myvimrc
 	au BufWritePost .vimrc,_vimrc,vimrc,.gvimrc,_gvimrc,gvimrc call ReloadVimrc()
 augroup END
 
+" Disable backup when there is version control
+if isdirectory(".git") || isdirectory(".svn") || isdirectory(".hg")
+	set nobackup
+endif
+
 " Return to line when reopening a file
 augroup line_return
 	au!
@@ -190,6 +194,8 @@ nnoremap <leader> x "+x
 nnoremap <leader> p "+gP
 nnoremap Y y$
 
+set pastetoggle=<F12>
+
 " Write as root
 cnoreabbrev w!! w !sudo tee % >/dev/null
 
@@ -200,6 +206,7 @@ function! Tabbify(size)
 	%retab!
 endfunction
 command! -nargs=1 Tabbify call Tabbify( '<args>' )
+cnoreabbrev rei Tabbify
 
 " Indentation settings
 set smartindent
@@ -212,8 +219,6 @@ nnoremap <S-Tab> <<_
 vnoremap <Tab> >><ESC>_
 vnoremap <S-Tab> <<<ESC>_
 inoremap <S-Tab> <<_
-
-set pastetoggle=<F12>
 
 " command completion
 set wildmenu
