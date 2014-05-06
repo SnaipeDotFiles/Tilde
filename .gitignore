@@ -47,3 +47,4 @@ games/*
 logs/*
 .gnupg/*
 .gem
+*.swp
