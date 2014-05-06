@@ -10,12 +10,14 @@ bind READNULLCMD nullpager
 bind LESS less
 typeset -U path ldpath
 
-path=(~/bin ~/.gem/ruby/2.1.0/bin $path)
+export JAVA_HOME="/usr/lib/jvm/java-7-openjdk/"
+export ANDROID_HOME="/home/snaipe/ides/adt-bundle-linux-x86_64-20140321/sdk"
+
+path=(~/bin $ANDROID_HOME/tools $ANDROID_HOME/platform-tools ~/.gem/ruby/2.1.0/bin $path)
 ldpath=(/usr/local/lib $ldpath)
 editor=vim
 pager=less
 nullpager=$pager
 less=-FX
 
-eval $(ssh-agent)
 } >/dev/null 2>&1
