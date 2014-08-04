@@ -6,21 +6,31 @@ filetype off
 set rtp+=~/.vim/bundle/vundle
 call vundle#rc()
 
-Bundle 'gmarik/vundle'
-Bundle 'wincent/Command-T'
-Bundle 'flazz/vim-colorschemes'
-Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/syntastic'
-Bundle 'airblade/vim-gitgutter'
-Bundle 'vim-scripts/a.vim'
-Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'terryma/vim-multiple-cursors'
-Bundle 'msanders/snipmate.vim'
-Bundle 'Lokaltog/vim-easymotion'
+Plugin 'gmarik/vundle'
+Plugin 'wincent/Command-T'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/syntastic'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'vim-scripts/a.vim'
+Plugin 'jistr/vim-nerdtree-tabs'
+Plugin 'terryma/vim-multiple-cursors'
+Plugin 'msanders/snipmate.vim'
+Plugin 'Lokaltog/vim-easymotion'
+"Plugin 'git://bitbucket.org/ns9tks/vim-autocomplpop.git'
 
 filetype plugin indent on
 syntax on
+
+" Globals
+if has('win32') || has('win32unix')
+	let separator = '_'
+else
+	let separator = '.'
+endif
+
+let vimhome=$HOME . '/' . separator . 'vim'
 
 " Leader key
 let mapleader=','
@@ -45,8 +55,13 @@ set showcmd
 " History
 set undolevels=1000
 set undoreload=-1
-set undodir=~/.vim/undo.hist
+let undodir=vimhome . '/undo'
+let &undodir=undodir
 set undofile
+
+if !isdirectory(undodir)
+	call mkdir(undodir)
+endif
 
 " Mouse
 set mouse=a
@@ -100,7 +115,10 @@ set dictionary=/usr/share/dict/words
 
 " Completion
 set omnifunc=syntaxcomplete#Complete
+set completeopt=longest,menuone
 inoremap <leader>j <C-X><C-O>
+inoremap <C-Space> <C-X><C-O>
+inoremap <C-@> <C-X><C-O>
 
 " Tabs
 set showtabline=2
