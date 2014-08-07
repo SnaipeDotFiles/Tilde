@@ -16,6 +16,14 @@
 	diff = diff --word-diff
 	dc = diff --cached
 	grep = grep -Ii
-    unstage = reset HEAD
+	unstage = reset HEAD
+        restore = "!git checkout -- $(git status --porcelain | grep ${1} | cut -c 4-); #" 
+
 [credential]
 	helper = cache --timeout=3600
+
+[difftool "idea"]
+	cmd = idea diff "$(realpath $LOCAL)" "$(realpath $REMOTE)"
+
+[mergetool "idea"]
+	cmd = idea merge "$(realpath $LOCAL)" "$(realpath $REMOTE)" "$(realpath $BASE)" "$(realpath $MERGED)"
