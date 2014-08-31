@@ -8,3 +8,6 @@
 [submodule ".zsh"]
 	path = .zsh
 	url = git@github.com:SnaipeDotFiles/DotZsh.git
+[submodule ".X"]
+	path = .X
+	url = git@github.com:SnaipeDotFiles/DotX.git
