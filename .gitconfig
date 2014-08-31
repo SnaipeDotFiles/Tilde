@@ -5,7 +5,7 @@
 	st = status -sb
 	dr = status -sb -uno
 	ci = commit
-	lg = log --color --graph --pretty='%Cred%h%Creset %C(bold blue)<%an> %Cgreen(%cr)%Creset %Creset %n%B'
+	lg = log --color --graph --pretty='%Cred%h%Creset %C(bold blue)<%an> %Cgreen(%cr) %C(yellow)%d%Creset %n%B'
 	fl = log -u
 	f  = "!git ls-files | grep -i"
 	lt = describe --tags --abbrev=0
