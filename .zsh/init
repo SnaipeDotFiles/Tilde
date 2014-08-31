@@ -1,8 +1,0 @@
-autoload -U compinit promptinit colors
-compinit
-promptinit
-colors
-
-setopt HIST_IGNORE_DUPS
-
-set mouse=a
