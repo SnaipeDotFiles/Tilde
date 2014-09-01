@@ -11,3 +11,6 @@
 [submodule ".X"]
 	path = .X
 	url = git@github.com:SnaipeDotFiles/DotX.git
+[submodule ".xmonad"]
+	path = .xmonad
+	url = git@github.com:SnaipeDotFiles/DotXmonad.git
