@@ -20,3 +20,6 @@
 [submodule ".themes/Numix"]
 	path = .themes/Numix
 	url = https://github.com/shimmerproject/Numix.git
+[submodule ".fonts/powerline-fonts"]
+	path = .fonts/powerline-fonts
+	url = https://github.com/Lokaltog/powerline-fonts.git
