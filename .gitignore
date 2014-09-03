@@ -1,15 +1,17 @@
-.*
-!.vim
-!.zsh
-Desktop
-downloads
-documents
-images
-music
-workspace
-games/*
-logs/*
+*
 *.swp
+*.swo
 *.tmp
 *.lck
 *.lock
+
+# folders
+!.vim
+!.zsh
+!.themes/*
+!.X
+!.xmonad
+!.weechat
+
+# individual files
+!.gtkrc-2.0
