@@ -23,3 +23,6 @@
 [submodule ".weechat"]
 	path = .weechat
 	url = git@github.com:SnaipeDotFiles/DotWeechat.git
+[submodule ".vim"]
+	path = .vim
+	url = git@github.com:SnaipeDotFiles/DotVim.git
