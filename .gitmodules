@@ -4,13 +4,13 @@
 	branch = master
 [submodule ".zsh"]
 	path = .zsh
-	url = git@github.com:SnaipeDotFiles/DotZsh.git
+	url = git@github.com:SnaipeDotFiles/.zsh.git
 [submodule ".X"]
 	path = .X
-	url = git@github.com:SnaipeDotFiles/DotX.git
+	url = git@github.com:SnaipeDotFiles/.X.git
 [submodule ".xmonad"]
 	path = .xmonad
-	url = git@github.com:SnaipeDotFiles/DotXmonad.git
+	url = git@github.com:SnaipeDotFiles/.xmonad.git
 [submodule ".themes/iris"]
 	path = .themes/iris
 	url = https://github.com/xyl0n/iris.git
@@ -22,7 +22,7 @@
 	url = https://github.com/Lokaltog/powerline-fonts.git
 [submodule ".weechat"]
 	path = .weechat
-	url = git@github.com:SnaipeDotFiles/DotWeechat.git
+	url = git@github.com:SnaipeDotFiles/.weechat.git
 [submodule ".vim"]
 	path = .vim
-	url = git@github.com:SnaipeDotFiles/DotVim.git
+	url = git@github.com:SnaipeDotFiles/.vim.git
