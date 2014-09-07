@@ -1,0 +1,79 @@
+[options]
+resize_grip = false
+scroll_on_output = false
+scroll_on_keystroke = true
+audible_bell = false
+visible_bell = false
+mouse_autohide = false
+allow_bold = true
+dynamic_title = true
+urgent_on_bell = true
+clickable_url = true
+font = Meslo LG M DZ for Powerline 11
+scrollback_lines = 1000
+search_wrap = true
+cursor_blink = system
+cursor_shape = block
+browser = firefox
+transparency = 0.95
+
+# word characters used for word selection
+# (default if unset: all graphic non-punctuation/space characters)
+#word_chars = -A-Za-z0-9,./?%&#:_=+@~
+
+# set size hints for the window
+#size_hints = false
+
+# emit escape sequences for other keys modified by Control
+#modify_other_keys = false
+
+[colors]
+foreground = #cccccc
+foreground_bold = #ffffff
+#foreground_dim = #888888
+background = #101010
+#cursor = #dcdccc
+
+# if unset, will reverse foreground and background
+highlight = #2f2f2f
+
+# colors from color0 to color254 can be set
+# Black
+color0 = #000000
+color8 = #666666
+
+# Red
+color1 = #e53238
+color9 = #dca3a3
+
+# Green
+color2 = #60b48a
+color10 = #c3bf9f
+
+# Yellow
+color3 = #dfaf8f
+color11 = #f0dfaf
+
+# Blue
+color4 = #506070
+color12 = #94bff3
+
+# Magenta
+color5 = #ed6666
+color13 = #99ffff
+
+# Cyan
+color6 = #8cd0d3
+color14 = #93e0e3
+
+# White
+color7 = #cccccc
+color15 = #ffffff
+
+[hints]
+#foreground = #dcdccc
+#background = #3f3f3f
+#padding = 2
+#border = #3f3f3f
+#border_width = 0.5
+#roundness = 2.0
