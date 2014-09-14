@@ -2,7 +2,7 @@
 resize_grip = false
 scroll_on_output = false
 scroll_on_keystroke = true
-audible_bell = false
+audible_bell = true
 visible_bell = false
 mouse_autohide = false
 allow_bold = true
@@ -44,27 +44,27 @@ color8 = #666666
 
 # Red
 color1 = #e53238
-color9 = #dca3a3
+color9 = #ed6666
 
 # Green
-color2 = #60b48a
-color10 = #c3bf9f
+color2 = #99cc66
+color10 = #99ff99
 
 # Yellow
-color3 = #dfaf8f
-color11 = #f0dfaf
+color3 = #cc9966
+color11 = #ffff99
 
 # Blue
-color4 = #506070
-color12 = #94bff3
+color4 = #6699cc
+color12 = #99ccff
 
 # Magenta
 color5 = #ed6666
-color13 = #99ffff
+color13 = #ff9999
 
 # Cyan
-color6 = #8cd0d3
-color14 = #93e0e3
+color6 = #66cccc
+color14 = #99ffff
 
 # White
 color7 = #cccccc
