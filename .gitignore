@@ -8,7 +8,7 @@
 # folders
 !.vim
 !.zsh
-!.themes/*
+!.themes
 !.X
 !.xmonad
 !.weechat
