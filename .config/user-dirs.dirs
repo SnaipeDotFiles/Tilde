@@ -1,0 +1,8 @@
+XDG_DESKTOP_DIR="/home/snaipe/"
+XDG_DOWNLOAD_DIR="/home/snaipe/downloads"
+XDG_TEMPLATES_DIR="/home/snaipe/"
+XDG_PUBLICSHARE_DIR="/home/snaipe/shared/"
+XDG_DOCUMENTS_DIR="/home/snaipe/documents"
+XDG_MUSIC_DIR="/home/snaipe/music"
+XDG_PICTURES_DIR="/home/snaipe/images"
+XDG_VIDEOS_DIR="/home/snaipe/images/videos"
